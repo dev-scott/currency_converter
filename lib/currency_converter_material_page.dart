@@ -18,9 +18,14 @@ class _CurrencyConverterMaterialPageState
   final TextEditingController textEditingController = TextEditingController();
   double result = 0;
 
+  void convert() {
+    setState(() {
+      result = double.parse(textEditingController.text) * 81;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
     print("rebuild againt");
     //  double result = 0;
 
@@ -41,7 +46,7 @@ class _CurrencyConverterMaterialPageState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                result.toString(),
+                'INR ${result.toStringAsFixed(2)} USD',
                 style: const TextStyle(
                     fontSize: 45,
                     fontWeight: FontWeight.bold,
@@ -83,9 +88,7 @@ class _CurrencyConverterMaterialPageState
                           borderRadius: BorderRadius.circular(10),
                         ))),
                     onPressed: () {
-                      setState(() {
-                        result = double.parse(textEditingController.text) * 81;
-                      });
+                      convert();
                     },
                     child: const Text(
                       "Convert",
